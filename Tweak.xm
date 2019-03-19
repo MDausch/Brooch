@@ -5,7 +5,7 @@ CGFloat labelY = 0;
 
 %hook SBIconView
 %property (nonatomic,assign) BOOL mdbroochHasNotification;
-%property (nonatomic,assign) UIColor* mdbroochTextColor;
+%property (nonatomic,assign) _UILegibilitySettings* mdbroochDefaultLegibilitySettings;
 
 -(SBMutableIconLabelImageParameters *)_labelImageParameters{
   SBMutableIconLabelImageParameters *orig = %orig;
@@ -36,6 +36,7 @@ CGFloat labelY = 0;
     labelY = icon.frame.origin.y + icon.frame.size.height + labelOffset;
 }
 
+
 -(void)layoutSubviews{
   %orig;
 
@@ -60,22 +61,40 @@ CGFloat labelY = 0;
           self.labelView.layer.cornerRadius = 4;
           self.labelView.layer.borderColor = [borderColor CGColor];
           self.labelView.layer.borderWidth = 1;
-          self.mdbroochTextColor = borderColor;
           SBMutableIconLabelImageParameters *orig = [self _labelImageParameters];
           [orig setTextColor:[UIColor redColor]];
           [self _updateLabel];
+
+          _UILegibilitySettings *legi = [[_UILegibilitySettings alloc]initWithStyle:1
+                                   primaryColor: borderColor
+                                   secondaryColor:[UIColor colorWithWhite:0.25 alpha:1]
+                                   shadowColor:[UIColor colorWithWhite:0.1 alpha:0.23]];
+          [self setLegibilitySettings:legi];
+
+
         });
         SBMutableIconLabelImageParameters *orig = [self _labelImageParameters];
         [orig setTextColor:[UIColor redColor]];
         [self _updateLabel];
-
       }
     });
+
   }else{
     self.labelView.backgroundColor = [UIColor clearColor];
     self.labelView.layer.borderColor = [[UIColor clearColor] CGColor];
     self.labelView.layer.borderWidth = 0;
+
+    if(self.mdbroochDefaultLegibilitySettings)
+      [self setLegibilitySettings:self.mdbroochDefaultLegibilitySettings];
   }
+}
+
+-(void)setLegibilitySettings:(_UILegibilitySettings *)arg1 {
+  %orig;
+
+  //Store old legibility settings, and then never touch it again
+  if(!self.mdbroochDefaultLegibilitySettings)
+    self.mdbroochDefaultLegibilitySettings = arg1;
 }
 
 //Enable dock label

@@ -83,9 +83,11 @@
 @property (nonatomic,retain) UIView * labelView;
 @property (nonatomic,retain) SBIcon * icon;
 @property (nonatomic,assign) BOOL mdbroochHasNotification;
-@property (nonatomic,assign) UIColor* mdbroochTextColor;
 @property (nonatomic,retain) _UILegibilitySettings * legibilitySettings;
+@property (nonatomic,assign) _UILegibilitySettings* mdbroochDefaultLegibilitySettings;
+
 -(SBIconImageView *)_iconImageView;
 -(id)_labelImageParameters;
 -(void)_updateLabel;
+-(void)setLegibilitySettings:(_UILegibilitySettings *)arg1;
 @end
