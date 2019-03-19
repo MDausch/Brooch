@@ -1,6 +1,6 @@
 Package: ch.mdaus.brooch
 Name: Brooch
-Depends: mobilesubstrate
+Depends: mobilesubstrate, ch.mdaus.utils
 Version: 0.0.1
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!
