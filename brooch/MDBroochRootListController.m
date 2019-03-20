@@ -13,8 +13,6 @@
                                action:@selector(respring:)];
     self.navigationItem.rightBarButtonItem = respringButton;
     [respringButton release];
-
-
   }
   return self;
 }

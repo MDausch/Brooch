@@ -3,7 +3,6 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <spawn.h>
 #define kBroochPrefs @"/var/mobile/Library/Preferences/ch.mdaus.brooch.plist"
-#import "HBTwitterCell.h"
 
 
 @interface MDBroochRootListController : PSListController

@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = Brooch
-Brooch_FILES = MDBroochRootListController.m HBTwitterCell.m HBLinkTableCell.m HBTintedTableCell.m
+Brooch_FILES = MDBroochRootListController.m
 Brooch_INSTALL_PATH = /Library/PreferenceBundles
 Brooch_FRAMEWORKS = UIKit
 Brooch_PRIVATE_FRAMEWORKS = Preferences
