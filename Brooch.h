@@ -3,6 +3,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UiKit.h>
 #import <objc/runtime.h>
+#import <libcolorpicker.h>
+#define kBroochPrefs @"/var/mobile/Library/Preferences/ch.mdaus.brooch.plist"
+
 
 @interface _UILegibilityView : UIView
 @end
@@ -90,4 +93,22 @@
 -(id)_labelImageParameters;
 -(void)_updateLabel;
 -(void)setLegibilitySettings:(_UILegibilitySettings *)arg1;
+@end
+
+@interface SBFolderIcon : SBIcon
+-(id)applicationIconsWithBadgesSortedByImportance;
+@end
+
+@interface SBLeafIcon : SBIcon
+@end
+
+@interface SBApplicationIcon : SBLeafIcon
+-(id)generateIconImage:(int)arg1 ;
+@end
+
+
+@interface SBIconParallaxBadgeView : UIView
+@end
+
+@interface SBIconBadgeView : UIView
 @end
